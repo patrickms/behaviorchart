@@ -25,8 +25,31 @@
                 $('.table-remove').click(function () {
                   $(this).parents('tr').detach();
                 });
-                alert('hi');
-                console.log('table', $TABLE);
+                $BTN.click(function () {
+                      var $rows = $TABLE.find('tr:not(:hidden)');
+                      var headers = [];
+                      var data = [];
+                      
+                      // Get the headers (add special header logic here)
+                      $($rows.shift()).find('th:not(:empty)').each(function () {
+                        headers.push($(this).text().toLowerCase());
+                      });
+                      
+                      // Turn all existing rows into a loopable array
+                      $rows.each(function () {
+                        var $td = $(this).find('td');
+                        var h = {};
+                        
+                        // Use the headers from earlier to name our hash keys
+                        headers.forEach(function (header, i) {
+                          h[header] = $td.eq(i).text();   
+                        });
+                        
+                        data.push(h);
+                      });
+                      
+                      // Output the result
+                      console.log('data',data);
             });
     </script>
     
