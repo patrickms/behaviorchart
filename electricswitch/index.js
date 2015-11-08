@@ -18,7 +18,7 @@ function updatePower(rows)
     var newState=false;
     if(rows)
     {
-    	console.log('handling rows');
+    	console.log('handling rows', rows);
     	var now=new Date();
     	var today=Date.today();
     	var nearestBefore =today.at('00:00AM');
