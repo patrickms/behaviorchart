@@ -84,6 +84,6 @@ board.on("ready", function() {
   // on-off phase periods
   
   //Wait for standrd input to avoid quitting
-  process.stdin.resume();
-  
+  //process.stdin.resume();
+  setInterval(function(){}, Math.POSITIVE_INFINITY);
 });
