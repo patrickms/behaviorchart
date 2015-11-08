@@ -2,7 +2,12 @@ var Firebase=require('firebase')
 var root=new Firebase('https://behaviorchart.firebaseIO.com/')
 
 var five = require("johnny-five");
-var board = new five.Board();
+var os=require('os');
+var board;
+if(os.type().toLowerCase()=='windows_nt')
+	board = new five.Board( {port: "COM3"});
+else
+	board = new five.Board();
 
 board.on("ready", function() {
   console.log('Arduino ready');
