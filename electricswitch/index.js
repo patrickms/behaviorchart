@@ -61,8 +61,10 @@ board.on("ready", function() {
   
   // Create a standard `led` component instance
   powerPin = new five.Led(12);
+  ledPin = new five.Led(13);
+  ledPin.blink(500);
   console.log('power pin created');
-  powerPin.on();
+//  powerPin.on();
   var timetableRef = root.child('timetable');
   console.log('timetableref created');
   /*
