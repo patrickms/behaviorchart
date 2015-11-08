@@ -80,7 +80,7 @@ board.on("ready", function() {
     var rows=dataSnapshot.val();
     console.log('updating data for', rows);
     lastRows=rows;
-    updatePower(rows);
+    //updatePower(rows);
     console.log('power updated');
   });
   // "blink" the led in 500ms
