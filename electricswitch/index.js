@@ -83,4 +83,7 @@ board.on("ready", function() {
   // "blink" the led in 500ms
   // on-off phase periods
   
+  //Wait for standrd input to avoid quitting
+  process.stdin.resume();
+  
 });
