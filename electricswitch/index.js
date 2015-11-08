@@ -13,6 +13,10 @@ else
 var lastRows=[];
 var powerPin=null;
 
+process.on('uncaughtException', function (err) {
+  console.log(err);
+})
+
 function updatePower(rows)
 {
     var newState=false;
@@ -42,9 +46,9 @@ function updatePower(rows)
     	if(powerPin)
     	{
 			if(allowBefore)
-				setTimeout(function(){console.log("powerPin.on();")}, 500);
+				setTimeout(function(){console.log("powerPin.on();");powerPin.on();}, 500);
 			else
-				setTimeout(function(){console.log("powerPin.off();")}, 500);
+				setTimeout(function(){console.log("powerPin.off();";powerPin.off();)}, 500);
 		};
     	console.log('info',nearestBefore, nearestAfter, allowBefore);
     	setTimeout( updatePowerFromLastRows, Math.max(1000,nearestAfter - ( new Date() ) ) );
