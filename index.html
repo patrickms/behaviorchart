@@ -56,7 +56,7 @@
                 
               timetableRef.on('value', function(dataSnapshot) {
                 // code to handle new value.
-                val=dataSnapshot.val().toLowerCase().trim();
+                val=dataSnapshot.val();
                 var $rows = $TABLE.find('tbody').find('tr:not(:hidden)');
                 $rows.detach();
                 val.forEach(function(rowValue, index){
