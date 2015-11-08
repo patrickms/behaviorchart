@@ -48,7 +48,7 @@ function updatePower(rows)
 			if(allowBefore)
 				setTimeout(function(){console.log("powerPin.on();");powerPin.on();}, 500);
 			else
-				setTimeout(function(){console.log("powerPin.off();";powerPin.off();)}, 500);
+				setTimeout(function(){console.log("powerPin.off();");powerPin.off();}, 500);
 		};
     	console.log('info',nearestBefore, nearestAfter, allowBefore);
     	setTimeout( updatePowerFromLastRows, Math.max(1000,nearestAfter - ( new Date() ) ) );
