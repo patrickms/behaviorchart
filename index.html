@@ -17,6 +17,14 @@
             {
                 var $TABLE = $('.pure-table');
                 var $BTN = $('#update-btn');
+                $('.table-add').click(function () {
+                  var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+                  $TABLE.find('table').append($clone);
+                });
+                
+                $('.table-remove').click(function () {
+                  $(this).parents('tr').detach();
+                });
                 alert('hi');
                 console.log('table', $TABLE);
             });
@@ -60,6 +68,17 @@
                 <option>No</option>
             </select></td>
             <td contenteditable="true"><input class="preconditionsmet" type="checkbox" checked="true" disabled="true"></input></td>
+            <td>&#10006;</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td class="starttime" contenteditable="true">11:59PM</td>
+            <td class="activitytitle" contenteditable="true">Bed</td>
+            <td contenteditable="true"><select class="electronicsallowed" value="No">
+                <option>Yes</option>
+                <option>No</option>
+            </select></td>
+            <td contenteditable="true"><input class="preconditionsmet" type="checkbox"></input></td>
             <td>&#10006;</td>
             <td></td>
         </tr>
