@@ -27,7 +27,7 @@ function updatePower(rows)
     	rows.forEach(function(row, rowIndex)
     	{
     		//console.log('nearestBefore', nearestBefore);
-    		console.log(row);
+    		//console.log(row);
     		startTime=today.at(row.startTime);
     		if(startTime<=now && startTime>=nearestBefore)
     		{
@@ -39,7 +39,7 @@ function updatePower(rows)
     			nearestAfter=startTime;
     		}
     	});
-    	console.log(nearestBefore, nearestAfter, allowBefore);
+    	console.log('info',nearestBefore, nearestAfter, allowBefore);
     	if(powerPin)
     	{
 			if(allowBefore)
