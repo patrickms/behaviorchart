@@ -59,8 +59,9 @@ board.on("ready", function() {
   
   // Create a standard `led` component instance
   powerPin = new five.Led(12);
-  var powerRef = root.child('power');
+  console.log('power pin created');
   var timetableRef = root.child('timetable');
+  console.log('timetableref created');
   /*
   powerRef.on('value', function(dataSnapshot) {
     // code to handle new value.
@@ -75,6 +76,7 @@ board.on("ready", function() {
   timetableRef.on('value', function(dataSnapshot) {
     // code to handle new value.
     var rows=dataSnapshot.val();
+    console.log('updating data for', rows);
     lastRows=rows;
     updatePower(rows);
   });
