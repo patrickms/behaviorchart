@@ -69,7 +69,8 @@ board.on("ready", function() {
 //  powerPin.on();
   var timetableRef = root.child('timetable');
   console.log('timetableref created');
-  
+
+  var powerRef = root.child('power');  
   powerRef.on('value', function(dataSnapshot) {
     // code to handle new value.
     val=dataSnapshot.val().toLowerCase().trim();
