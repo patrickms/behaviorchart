@@ -28,7 +28,7 @@ function updatePower(rows)
     	{
     		//console.log('nearestBefore', nearestBefore);
     		console.log(row);
-    		//startTime=today.at(row.startTime);
+    		startTime=today.at(row.startTime);
     		if(startTime<=now && startTime>=nearestBefore)
     		{
     			nearestBefore=startTime;
