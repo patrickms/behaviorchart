@@ -18,7 +18,7 @@ function updatePower(rows)
     var newState=false;
     if(rows)
     {
-    	console.log('handling rows', rows);
+    	//console.log('handling rows', rows);
     	var now=new Date();
     	var today=Date.today();
     	var nearestBefore =today.at('00:00AM');
@@ -39,7 +39,6 @@ function updatePower(rows)
     			nearestAfter=startTime;
     		}
     	});
-    	//console.log('info',nearestBefore, nearestAfter, allowBefore);
     	if(powerPin)
     	{
 			if(allowBefore)
@@ -47,6 +46,7 @@ function updatePower(rows)
 			else
 				setTimeout(function(){powerPin.off();}, 500);
 		};
+    	console.log('info',nearestBefore, nearestAfter, allowBefore);
     	setTimeout( updatePowerFromLastRows, Math.max(1000,nearestAfter - ( new Date() ) ) );
 	}
 }
@@ -88,7 +88,6 @@ board.on("ready", function() {
     console.log('updating data for', rows);
     lastRows=rows;
     setTimeout(function(){updatePower(rows);}, 500);
-    console.log('power updated');
   });
   // "blink" the led in 500ms
   // on-off phase periods
