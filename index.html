@@ -17,6 +17,7 @@
     See http://codepen.io/ashblue/pen/mCtuA for info on editable tables -->
     <script>
         
+    	var today=Date.today();
         rootRef=new Firebase('https://behaviorchart.firebaseIO.com/');
         $( document ).ready(
             function()
@@ -24,10 +25,10 @@
                 var $TABLE = $('.pure-table');
                 var $BTN = $('#update-btn');
                 function compareStartTimes(a, b) {
-                  if (a.startTime<b.startTime) {
+                  if (today.at(a.startTime)<today.at(b.startTime)) {
                     return -1;
                   }
-                  if (a.startTime>b.startTime) {
+                  if (today.at(a.startTime)>today.at(b.startTime)) {
                     return 1;
                   }
                   // a must be equal to b
