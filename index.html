@@ -12,12 +12,14 @@
     <!--
     See http://codepen.io/ashblue/pen/mCtuA for info on editable tables -->
     <script>
-        $document.ready(
+        $( document ).ready(
             function()
             {
+                var $TABLE = $('.pure-table');
                 var $BTN = $('#update-btn');
                 alert('hi');
-            })
+                console.log('table', $TABLE);
+            });
     </script>
 </head>
 
