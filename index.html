@@ -16,65 +16,66 @@
     <!--
     See http://codepen.io/ashblue/pen/mCtuA for info on editable tables -->
     <script>
-        function compareStartTimes(a, b) {
-          if (a.startTime<b.startTime) {
-            return -1;
-          }
-          if (a.startTime>b.startTime) {
-            return 1;
-          }
-          // a must be equal to b
-          return 0;
-        }
-        
-        function getTableData(){
-            var $rows = $TABLE.find('tbody').find('tr:not(:hidden)');
-          var headers = [];
-          var data = [];
-          
-          // Turn all existing rows into a loopable array
-          $rows.each(function () {
-            var h = {};
-            var stime = $(this).find('.starttime');
-            h.startTime = stime[0].textContent;
-            h.activityTitle=$(this).find('.activitytitle')[0].textContent;
-            h.electronicsAllowed=$(this).find('.electronicsallowed')[0].value.toLowerCase().startsWith('y');
-            h.preconditionsMet=$(this).find('.preconditionsmet')[0].checked;
-            data.push(h);
-          });
-          data.sort(compareStartTimes);
-          return data;
-        }
-        
-        function setTableData(val){
-            var $rows = $TABLE.find('tbody').find('tr:not(:hidden)');
-            $rows.detach();
-            if(val)
-            {
-                val.sort(compareStartTimes);
-                val.forEach(function(rowValue, index){
-                    var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
-                    $clone.find('.starttime')[0].textContent=rowValue.startTime;
-                    $clone.find('.activitytitle')[0].textContent=rowValue.activityTitle;
-                    $clone.find('.electronicsallowed')[0].value=rowValue.electronicsAllowed?"Yes":"No";
-                    $clone.find('.preconditionsmet')[0].checked=rowValue.preconditionsMet;
-                    $TABLE.find('tbody').append($clone);
-                });
-            }
-        };
         
         rootRef=new Firebase('https://behaviorchart.firebaseIO.com/');
         $( document ).ready(
             function()
             {
+                var $TABLE = $('.pure-table');
+                var $BTN = $('#update-btn');
+                function compareStartTimes(a, b) {
+                  if (a.startTime<b.startTime) {
+                    return -1;
+                  }
+                  if (a.startTime>b.startTime) {
+                    return 1;
+                  }
+                  // a must be equal to b
+                  return 0;
+                }
+                
+                function getTableData(){
+                    var $rows = $TABLE.find('tbody').find('tr:not(:hidden)');
+                  var headers = [];
+                  var data = [];
+                  
+                  // Turn all existing rows into a loopable array
+                  $rows.each(function () {
+                    var h = {};
+                    var stime = $(this).find('.starttime');
+                    h.startTime = stime[0].textContent;
+                    h.activityTitle=$(this).find('.activitytitle')[0].textContent;
+                    h.electronicsAllowed=$(this).find('.electronicsallowed')[0].value.toLowerCase().startsWith('y');
+                    h.preconditionsMet=$(this).find('.preconditionsmet')[0].checked;
+                    data.push(h);
+                  });
+                  data.sort(compareStartTimes);
+                  return data;
+                }
+                
+                function setTableData(val){
+                    var $rows = $TABLE.find('tbody').find('tr:not(:hidden)');
+                    $rows.detach();
+                    if(val)
+                    {
+                        val.sort(compareStartTimes);
+                        val.forEach(function(rowValue, index){
+                            var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+                            $clone.find('.starttime')[0].textContent=rowValue.startTime;
+                            $clone.find('.activitytitle')[0].textContent=rowValue.activityTitle;
+                            $clone.find('.electronicsallowed')[0].value=rowValue.electronicsAllowed?"Yes":"No";
+                            $clone.find('.preconditionsmet')[0].checked=rowValue.preconditionsMet;
+                            $TABLE.find('tbody').append($clone);
+                        });
+                    }
+                };
+
                 rootRef.authWithOAuthPopup("google", function(error, authData) {
                   if (error) {
                     console.log("Login Failed!", error);
                   } else {
                         console.log("Authenticated successfully with payload:", authData);
                         timetableRef = rootRef.child('timetable');
-                        var $TABLE = $('.pure-table');
-                        var $BTN = $('#update-btn');
                         $('.table-add').click(function () {
                           var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
                           $TABLE.find('tbody').append($clone);
