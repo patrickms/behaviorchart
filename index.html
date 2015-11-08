@@ -17,7 +17,7 @@
     See http://codepen.io/ashblue/pen/mCtuA for info on editable tables -->
     <script>
         rootRef=new Firebase('https://behaviorchart.firebaseIO.com/');
-        timetableRef = rootRef.child('power');
+        timetableRef = rootRef.child('timetable');
         $( document ).ready(
             function()
             {
@@ -59,7 +59,7 @@
                 val=dataSnapshot.val().toLowerCase().trim();
                 var $rows = $TABLE.find('tbody').find('tr:not(:hidden)');
                 $rows.detach();
-                val.each(function(index, rowValue){
+                val.forEach(function(rowValue, index){
                     var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
                     $clone.find('.starttime')[0].textContent=rowValue.startTime;
                     $clone.find('.activitytitle')[0].textContent=rowValue.activityTitle;
