@@ -17,7 +17,7 @@
     See http://codepen.io/ashblue/pen/mCtuA for info on editable tables -->
     <script>
         rootRef=new Firebase('https://behaviorchart.firebaseIO.com/');
-        timetableRef = root.child('power');
+        timetableRef = rootRef.child('power');
         $( document ).ready(
             function()
             {
