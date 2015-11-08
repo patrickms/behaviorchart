@@ -58,7 +58,9 @@ function updatePowerFromLastRows()
 
 board.on("ready", function() {
   console.log('Arduino ready');
-  
+  (function wait () {
+   setTimeout(wait, 1000);
+  })();
   // Create a standard `led` component instance
   powerPin = new five.Led(12);
   ledPin = new five.Led(13);
