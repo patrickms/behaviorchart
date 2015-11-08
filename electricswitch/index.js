@@ -39,7 +39,7 @@ function updatePower(rows)
     			nearestAfter=startTime;
     		}
     	});
-    	console.log('info',nearestBefore, nearestAfter, allowBefore);
+    	//console.log('info',nearestBefore, nearestAfter, allowBefore);
     	if(powerPin)
     	{
 			if(allowBefore)
