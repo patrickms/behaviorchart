@@ -59,15 +59,17 @@
                 val=dataSnapshot.val();
                 var $rows = $TABLE.find('tbody').find('tr:not(:hidden)');
                 $rows.detach();
-                val.forEach(function(rowValue, index){
-                    var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
-                    $clone.find('.starttime')[0].textContent=rowValue.startTime;
-                    $clone.find('.activitytitle')[0].textContent=rowValue.activityTitle;
-                    $clone.find('.electronicsallowed')[0].value=rowValue.electronicsAllowed?"Yes":"No";
-                    $clone.find('.preconditionsmet')[0].checked=rowValue.preconditionsMet;
-                    $TABLE.find('tbody').append($clone);
-                })
-                
+                if(val)
+                {
+                    val.forEach(function(rowValue, index){
+                        var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+                        $clone.find('.starttime')[0].textContent=rowValue.startTime;
+                        $clone.find('.activitytitle')[0].textContent=rowValue.activityTitle;
+                        $clone.find('.electronicsallowed')[0].value=rowValue.electronicsAllowed?"Yes":"No";
+                        $clone.find('.preconditionsmet')[0].checked=rowValue.preconditionsMet;
+                        $TABLE.find('tbody').append($clone);
+                    });
+                };                
               });
             });
     </script>
