@@ -1,12 +1,12 @@
 var Firebase=require('firebase')
 var root=new Firebase('https://behaviorchart.firebaseIO.com/')
 
-//var five = require("johnny-five");
+var five = require("johnny-five");
 var os=require('os');
 var datejs=require('datejs');
 var board;
 if(os.type().toLowerCase()=='windows_nt')
-	board = null; ///new five.Board( {port: "COM3"});
+	board = new five.Board( {port: "COM3"});
 else
 	board = new five.Board();
 
@@ -56,11 +56,11 @@ function updatePowerFromLastRows()
 	updatePower(lastRows);
 }
 
-//board.on("ready", function() {
+board.on("ready", function() {
   console.log('Arduino ready');
   
   // Create a standard `led` component instance
-//  powerPin = new five.Led(12);
+  powerPin = new five.Led(12);
   console.log('power pin created');
   var timetableRef = root.child('timetable');
   console.log('timetableref created');
@@ -80,7 +80,7 @@ function updatePowerFromLastRows()
     var rows=dataSnapshot.val();
     console.log('updating data for', rows);
     lastRows=rows;
-    //updatePower(rows);
+    updatePower(rows);
     console.log('power updated');
   });
   // "blink" the led in 500ms
@@ -89,4 +89,4 @@ function updatePowerFromLastRows()
   //Wait for standrd input to avoid quitting
   //process.stdin.resume();
   setInterval(function(){}, Math.POSITIVE_INFINITY);
-//});
+});
