@@ -43,11 +43,11 @@ function updatePower(rows)
     	if(powerPin)
     	{
 			if(allowBefore)
-				powerPin.on();
+				setTimeout(function(){powerPin.on();}, 500);
 			else
-				powerPin.off();
+				setTimeout(function(){powerPin.off();}, 500);
 		};
-    	setTimeout( updatePowerFromLastRows, nearestAfter - ( new Date() ) );
+    	setTimeout( updatePowerFromLastRows, Math.max(1000,nearestAfter - ( new Date() ) ) );
 	}
 }
 
@@ -87,7 +87,7 @@ board.on("ready", function() {
     var rows=dataSnapshot.val();
     console.log('updating data for', rows);
     lastRows=rows;
-    updatePower(rows);
+    setTimeout(function(){updatePower(rows);}, 500);
     console.log('power updated');
   });
   // "blink" the led in 500ms
