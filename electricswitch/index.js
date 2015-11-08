@@ -6,9 +6,9 @@ var os=require('os');
 var datejs=require('datejs');
 var board;
 if(os.type().toLowerCase()=='windows_nt')
-	board = new five.Board( {port: "COM3"});
+	board = new five.Board( {port: "COM3", repl: false});
 else
-	board = new five.Board();
+	board = new five.Board({repl: false});
 
 var lastRows=[];
 var powerPin=null;
