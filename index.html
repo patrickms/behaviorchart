@@ -15,6 +15,9 @@
     <!--
     See http://codepen.io/ashblue/pen/mCtuA for info on editable tables -->
     <script>
+        Firebase=require('firebase');
+        rootRef=new Firebase('https://behaviorchart.firebaseIO.com/');
+        timetableRef = root.child('power');
         $( document ).ready(
             function()
             {
@@ -45,9 +48,27 @@
                         data.push(h);
                       });
                       
+                      //Send the output to firebase
+                      timetableRef.set(data);
                       // Output the result
                       console.log('data',data);
                 });
+                
+              timetableRef.on('value', function(dataSnapshot) {
+                // code to handle new value.
+                val=dataSnapshot.val().toLowerCase().trim();
+                var $rows = $TABLE.find('tbody').find('tr:not(:hidden)');
+                $rows.detach();
+                val.each(function(index, rowValue){
+                    var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+                    $clone.find('.starttime')[0].textContent=rowValue.startTime;
+                    $clone.find('.activitytitle')[0].textContent=rowValue.activityTitle;
+                    $clone.find('.electronicsallowed')[0].value=rowValue.electronicsAllowed?"Yes":"No";
+                    $clone.find('.preconditionsmet')[0].checked=rowValue.preconditionsMet;
+                    $TABLE.find('tbody').append($clone);
+                })
+                
+              });
             });
     </script>
     
