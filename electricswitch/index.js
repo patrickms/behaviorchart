@@ -70,6 +70,7 @@ board.on("ready", function() {
   var timetableRef = root.child('timetable');
   console.log('timetableref created');
 
+/*
   var powerRef = root.child('power');  
   powerRef.on('value', function(dataSnapshot) {
     // code to handle new value.
@@ -79,8 +80,8 @@ board.on("ready", function() {
     	powerPin.on();
     else if(val=='off')
     	powerPin.off();
-  });
-/*
+  });*/
+
   timetableRef.on('value', function(dataSnapshot) {
     // code to handle new value.
     var rows=dataSnapshot.val();
@@ -88,7 +89,7 @@ board.on("ready", function() {
     lastRows=rows;
     updatePower(rows);
     console.log('power updated');
-  });*/
+  });
   // "blink" the led in 500ms
   // on-off phase periods
   
