@@ -38,7 +38,10 @@
                       $rows.each(function () {
                         var h = {};
                         var stime = $(this).find('.starttime');
-                        h.startTime = stime;
+                        h.startTime = stime[0].textContent;
+                        h.activityTitle=$(this).find('.activitytitle')[0].textContent;
+                        h.electronicsAllowed=$(this).find('.electronicsallowed')[0].value.toLowerCase().startsWith('y');
+                        h.preconditionsMet=$(this).find('.preconditionsmet')[0].checked;
                         data.push(h);
                       });
                       
