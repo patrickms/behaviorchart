@@ -18,6 +18,7 @@ function updatePower(rows)
     var newState=false;
     if(rows)
     {
+    	console.log('handling rows');
     	var now=new Date();
     	var today=Date.today();
     	var nearestBefore =today.at('00:00AM');
@@ -25,6 +26,7 @@ function updatePower(rows)
     	var nearestAfter = today.at('11:59:59PM');
     	rows.forEach(function(row, rowIndex)
     	{
+    		console.log('nearestBefore', nearestBefore);
     		console.log(row);
     		startTime=today.at(row.startTime);
     		if(startTime<=now && startTime>=nearestBefore)
@@ -79,6 +81,7 @@ board.on("ready", function() {
     console.log('updating data for', rows);
     lastRows=rows;
     updatePower(rows);
+    console.log('power updated');
   });
   // "blink" the led in 500ms
   // on-off phase periods
