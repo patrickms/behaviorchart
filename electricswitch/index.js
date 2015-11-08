@@ -15,6 +15,8 @@ board.on("ready", function() {
   // Create a standard `led` component instance
   var powerPin = new five.Led(12);
   var powerRef = root.child('power');
+  var timetableRef = root.child('timetable');
+  /*
   powerRef.on('value', function(dataSnapshot) {
     // code to handle new value.
     val=dataSnapshot.val().toLowerCase().trim();
@@ -23,7 +25,7 @@ board.on("ready", function() {
     	powerPin.on();
     else if(val=='off')
     	powerPin.off();
-  });
+  });*/
 
   // "blink" the led in 500ms
   // on-off phase periods
